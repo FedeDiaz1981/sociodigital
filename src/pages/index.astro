@@ -1,0 +1,140 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Faq from "../components/Faq.astro";
+import ServiciosSection from "../components/ServiciosSection.astro";
+import Resultados from "../components/Resultados.astro";
+import SocioDigital from "../components/SocioDigital.astro";
+import Hero from "../components/Hero.astro";
+
+const listaFaqs = [
+  {
+    pregunta:
+      "¿Cómo consigue Socio Digital clientes para mi negocio fotovoltaico?",
+    respuesta:
+      "Socio Digital utiliza estrategias de publicidad digital en plataformas como Google, Facebook e Instagram para atraer clientes potenciales interesados en tus servicios. Además, implementamos automatizaciones y optimización de seguimiento para aumentar la conversión de esos clientes en ventas.",
+  },
+  {
+    pregunta: "¿Cuánto tiempo tarda en verse resultados?",
+    respuesta: "El tiempo varía según la zona y la competencia, pero la mayoría de nuestros clientes comienzan a ver nuevos contactos y oportunidades en las primeras semanas. La optimización y escalabilidad pueden llevar de 2 a 4 semanas para maximizar resultados.",
+  },
+  {
+    pregunta: "¿Cómo sé si Socio Digital es adecuado para mi negocio?",
+    respuesta: "Si ofreces un servicio de instalación de paneles solares, y quieres generar más clientes con estrategias digitales, Socio Digital es para ti. Podemos analizar tu caso y mostrarte ejemplos de negocios similares con los que estamos trabajado.",
+  },
+];
+
+const servicios = [
+  {
+    titulo: "Marketing Digital",
+    subtitulo:
+      "Estrategia multiplataforma completa para atraer a los clientes que necesitas.",
+    cta: { label: "Saber Más", href: "/servicios#marketing" },
+    imagen:
+      "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/da16a62c-00de-45c6-be5a-1f0bac4052a9.jpeg",
+  },
+  {
+    titulo: "Páginas Web",
+    subtitulo: "Webs profesionales optimizadas para SEO y 100% responsive.",
+    cta: { label: "Saber Más", href: "/servicios#web" },
+    imagen: {
+      src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/a7aa90f1-8bf2-4dca-b019-6d18ddf664cb.jpeg",
+      alt: "Diseño web",
+    },
+    invert: true,
+  },
+  {
+    titulo: "Google Maps",
+    subtitulo: "Hacemos que te encuentren cuando buscan tus servicios cerca.",
+    cta: { label: "Saber Más", href: "/servicios#maps" },
+    imagen: {
+      src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67ddde8ee3e486f1fc3bc02d.webp",
+      alt: "Posicionamiento local",
+    },
+  },
+  {
+    titulo: "IA y Automatización",
+    subtitulo: "Herramientas para optimizar procesos y escalar tu negocio.",
+    cta: { label: "Saber Más", href: "/servicios#ia" },
+    imagen: {
+      src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/79772582-4990-4544-b3ac-34bf38d3c9dd.jpeg",
+      alt: "Automatización con IA",
+    },
+    invert: true,
+  },
+];
+
+const imagenesResultados = [
+  {
+    src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67dde584eba39887d91e3d94.jpeg",
+    alt: "Caso 1",
+  },
+  {
+    src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67e8ebe2e519ed66c229c0fa.jpeg",
+    alt: "Caso 2",
+  },
+  {
+    src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67dde58482e149212fedf49b.jpeg",
+    alt: "Caso 3",
+  },
+  {
+    src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67ec862ed7d7f65e7902c5da.png",
+    alt: "Caso 4",
+  },
+  {
+    src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67ec862edae03ee198ee14d3.jpeg",
+    alt: "Caso 5",
+  },
+  {
+    src: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/67e8ebe21870f4bf33481bf2.jpeg",
+    alt: "Caso 6",
+  },
+];
+---
+
+<Layout>
+  <!-- Hero -->
+  <Hero />
+  <div
+    style="
+  background: url('https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/jcEKoOF2TKiEyPXqmAdw/media/64fb5900c42c810540a42444.jpeg') center center / cover no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+"
+  >
+    <!-- Servicios -->
+    <ServiciosSection
+      heading="Nuestros Servicios"
+      subheading="Todo lo necesario para crecer tu negocio de eficiencia energética"
+      servicios={servicios}
+    />
+  </div>
+
+  <Resultados
+    heading="Algunos de Nuestros Resultados"
+    images={imagenesResultados}
+    cta={{
+      label: "Reserva una llamada",
+      href: "https://api.leadconnectorhq.com/widget/booking/xRuzUEjIGwYKcgQHehP5",
+    }}
+  />
+
+  <div
+    style=" background: url('https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/jcEKoOF2TKiEyPXqmAdw/media/64fb5900c42c810540a42444.jpeg') center center / cover no-repeat;
+  background-attachment: fixed;
+  width: 100%;"
+  >
+    <section
+      class="py-20 bg-[linear-gradient(180deg,#4e7264_0%,#4e7264cc_100%)]"
+    >
+      <div class="max-w-4xl mx-auto px-4">
+        <h1 class="text-4xl font-bold text-white text-center mb-12">
+          Preguntas Frecuentes sobre Socio Digital
+        </h1>
+        <Faq faqs={listaFaqs} />
+      </div>
+    </section>
+  </div>
+
+  <SocioDigital />
+</Layout>

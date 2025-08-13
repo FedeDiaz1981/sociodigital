@@ -1,0 +1,88 @@
+---
+type ImageLike = string | { src: string; alt?: string };
+
+export interface ServicioFlexible {
+  titulo: string;
+  descripcion?: string;
+  subtitulo?: string;
+  cta?: { label: string; href: string };
+  img?: ImageLike;
+  imagen?: ImageLike;
+  href?: string;
+  invert?: boolean;
+}
+
+export interface Props {
+  heading: string;
+  subheading?: string;
+  servicios: ServicioFlexible[];
+}
+
+const { heading, subheading, servicios } = Astro.props;
+
+// Normalizamos ambas variantes a una sola interfaz interna
+const items = servicios.map((s) => {
+  const pick = (v?: ImageLike) =>
+    typeof v === "string" ? { src: v, alt: "" } : (v ?? { src: "", alt: "" });
+
+  const imgA = pick(s.img);
+  const imgB = pick(s.imagen);
+  const finalImg = imgA.src ? imgA : imgB;
+
+  return {
+    titulo: s.titulo,
+    desc: s.descripcion ?? s.subtitulo ?? "",
+    img: finalImg.src,
+    alt: finalImg.alt ?? s.titulo,
+    href: s.href ?? s.cta?.href ?? "#",
+    ctaLabel: s.cta?.label ?? "Saber Más",
+    invert: s.invert ?? false,
+  };
+});
+---
+
+<section class="relative py-14 bg-[linear-gradient(180deg,#4e7264_0%,#4e7264cc_100%)]">
+  <div class="max-w-6xl mx-auto px-11">
+    <header class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white drop-shadow">
+        {heading}
+      </h2>
+      {subheading && <p class="text-white/90 mt-2">{subheading}</p>}
+    </header>
+    {items.map((s) => (
+      <div class="bg-white/95 rounded-2xl shadow-lg p-15 md:p-9 space-y-10 mb-5 ">
+        <div class="grid md:grid-cols-2 gap-[8%] items-center text-cemter">
+          <!-- Texto -->
+          <div class={`${s.invert ? "md:order-2" : ""}`}>
+            <div class="rounded-xl border-[3px] border-[#3F665A]  md:px-6 md:py-[27%] bg-white text-center">
+              <h3 class="text-2xl font-bold text-[#3F665A] text-center mb-4 mx-auto">
+                {s.titulo}
+              </h3>
+              {s.desc && <p class="text-gray-800 font-semibold leading-relaxed mb-6 text-left text-lg">{s.desc}</p>}
+              <div class="flex md:block justify-center">
+                <a href={s.href}
+                   class="inline-flex items-center justify-center px-9 py-4 rounded-lg
+                          bg-[#3F665A] text-white font-bold hover:bg-[#33574D] transition">
+                  {s.ctaLabel}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagen -->
+          <div class={`${s.invert ? "md:order-1" : ""}`}>
+            {s.img
+              ? (
+                <div class="rounded-xl overflow-hidden shadow-md w-[85%]">
+                  <img src={s.img} alt={s.alt} loading="lazy" class="w-full object-cover" />
+                </div>
+              )
+              : <div class="rounded-xl bg-gray-100 h-[380px]" /> /* placeholder si no hay imagen */
+            }
+          </div>
+        </div>
+      
+    </div>
+    ))}
+  </div>
+</section>

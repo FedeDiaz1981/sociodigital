@@ -1,0 +1,58 @@
+---
+export interface Imagen {
+  src: string;
+  alt?: string;
+}
+
+export interface Props {
+  heading?: string;                    // ej: "Algunos de Nuestros Resultados"
+  images: Imagen[];                    // 3, 6, 9... (múltiplos de 3 queda lindo)
+  cta?: { label: string; href: string } | null; // opcional
+}
+
+const {
+  heading = "Algunos de Nuestros Resultados",
+  images = [],
+  cta = { label: "Reserva una llamada", href: "https://api.leadconnectorhq.com/widget/booking/xRuzUEjIGwYKcgQHehP5" }
+} = Astro.props;
+---
+
+<section class="relative pt-[10%] pb-14 bg-white" >
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Título -->
+    <header class="text-center mb-[7%]">
+      <p class="text-2xl md:text-3xl font-bold text-[#446b5a]">{heading}</p>
+    </header>
+
+    <!-- Grilla de resultados -->
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {images.map((img) => (
+        <figure class="rounded-2xl overflow-hidden border shadow hover:shadow-md transition bg-white py-16 px-6">
+          <img
+            src={img.src}
+            alt={img.alt ?? "Resultado"}
+            loading="lazy"
+            class="w-full object-cover"
+          />
+        </figure>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    {cta && (
+      <div class="mt-[6%] text-center">
+        <a
+          href={cta.href}
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-block bg-[#446b5a] text-white px-9 py-4 rounded-xl font-medium hover:bg-indigo-700 transition text-[1.1rem]"
+        >
+          {cta.label}
+        </a>
+      </div>
+    )}
+  </div>
+
+  <!-- Fondo sutil opcional -->
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-indigo-50/60 to-transparent"></div>
+</section>

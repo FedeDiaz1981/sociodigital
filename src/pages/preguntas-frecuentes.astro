@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Faq from "../components/Faq.astro";
+
+const listaFaqs = [
+  { pregunta: "¿Cuánto tarda un proyecto en completarse?", respuesta: "Dependiendo del alcance, el promedio es de 2 a 4 semanas. En proyectos más complejos puede llevar más tiempo." },
+  { pregunta: "¿Ofrecen mantenimiento o soporte después de la entrega?", respuesta: "Sí, ofrecemos planes de mantenimiento y soporte técnico mensual opcional." },
+  { pregunta: "¿Se puede pagar en cuotas?", respuesta: "Sí, aceptamos pagos en dos o tres cuotas según el proyecto." },
+  { pregunta: "¿Puedo administrar el contenido de mi sitio?", respuesta: "Sí, si lo necesitás podemos integrar un CMS editable por vos, o te explicamos cómo hacer cambios simples directamente." }
+];
+---
+<Layout>
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-indigo-700 text-center mb-12">Preguntas Frecuentes</h1>
+      <Faq faqs={listaFaqs} />
+    </div>
+  </section>
+</Layout>
