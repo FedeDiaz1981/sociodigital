@@ -1,60 +1,39 @@
-<header class="relativetop-0 left-0 w-full z-50 bg-[#446b59] text-white">
+<header class="relative w-full z-50 bg-[#446b59] text-white">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <!-- Barra principal -->
+    <!-- Top bar: 3 columnas. En mobile hay 2 filas (la 2da es el CTA centrado) -->
     <div
-      class="grid grid-cols-[1fr_2fr_1fr] md:grid-cols-[0.5fr_1.5fr_1fr] items-center h-[13em] md:h-[8.5em]"
+      class="grid grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] md:grid-rows-1 items-center 
+             h-[13em] md:h-[8.5em]"
     >
-      <!-- Logo + divisor -->
-      <div class="flex items-center gap-3">
-        <!-- cambia la ruta del logo -->
-        <a href="/" class="flex items-center ml-[12%]">
+      <!-- Col 1: Logo -->
+      <div class="col-[1] row-[1] flex items-center">
+        <a href="/" class="flex items-center">
           <img
             src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/GdbjQ9W5ITo55MeZzU7v/media/6658afd460d3a730cb44798a.png"
             alt="Socio Digital"
-            class="h-[8em] w-auto"
+            class="h-[7em] md:h-[8em] w-auto"
           />
-          <span class="hidden sm:block h-8 w-px"></span>
+          <!-- separador fino si quisieras mostrarlo -->
+          <!-- <span class="hidden sm:block h-8 w-px bg-white/30 ml-3"></span> -->
         </a>
       </div>
 
-      <!-- Nav centrado (desktop) -->
-      <div>
-        <nav
-          class="hidden md:flex"
-          style="align-items: center; background-color: inherit; gap: 24px"
-        >
-          <a href="/" class="text-white/90 hover:text-white">Inicio</a>
-          <a href="/sobre-nosotros" class="text-white/90 hover:text-white"
-            >Sobre Nosotros</a
-          >
-          <a href="/servicios" class="text-white/90 hover:text-white"
-            >Servicios</a
-          >
-          <a href="/contacto" class="text-white/90 hover:text-white">Contacto</a
-          >
-        </nav>
+      <!-- Col 2: Nav centrado (solo desktop) -->
+      <nav class="col-[2] row-[1] hidden md:flex justify-center items-center gap-12 text-[1rem]">
+        <a href="/" class="text-white/90 hover:text-white">Inicio</a>
+        <a href="/sobre-nosotros" class="text-white/90 hover:text-white">Sobre Nosotros</a>
+        <a href="/servicios" class="text-white/90 hover:text-white">Servicios</a>
+        <a href="/contacto" class="text-white/90 hover:text-white">Contacto</a>
+      </nav>
 
-         <a
-          href="https://api.leadconnectorhq.com/widget/booking/xRuzUEjIGwYKcgQHehP5"
-          class="md:hidden inline-flex items-center justify-center rounded-xl mt-[30%] md:mt-0 px-8 py-[0.9rem] text-[1.1rem]
-         bg-[#1F2623] text-white font-semibold
-         ring-1 ring-white/40 hover:bg-black/60 transition
-         animate-glow"
-        >
-          Reserva una llamada
-        </a>
-      </div>
-
-      <!-- CTA derecha + hamburguesa -->
-      <div
-        class="flex justify-items-center items-center md:items-start gap-3 h-[80%] md:h-[50%]"
-      >
+      <!-- Col 3: CTA (desktop) + Hamburguesa (mobile) -->
+      <div class="col-[3] row-[1] flex items-center justify-end gap-3">
+        <!-- CTA desktop -->
         <a
           href="https://api.leadconnectorhq.com/widget/booking/xRuzUEjIGwYKcgQHehP5"
-          class="hidden md:inline-flex items-center justify-center rounded-xl mt-[30%] md:mt-0 px-8 py-[0.9rem] text-[1.1rem]
-         bg-[#1F2623] text-white font-semibold
-         ring-1 ring-white/40 hover:bg-black/60 transition
-         animate-glow"
+          class="hidden md:inline-flex items-center justify-center rounded-xl px-8 py-[0.9rem] text-[1.1rem]
+                 bg-[#1F2623] text-white font-semibold ring-1 ring-white/40 hover:bg-black/60 transition
+                 animate-glow"
         >
           Reserva una llamada
         </a>
@@ -64,34 +43,37 @@
           id="menu-btn"
           aria-controls="mobile-menu"
           aria-expanded="false"
-          class="md:hidden inline-flex items-center justify-items-center rounded-md px-3 py-2
+          class="md:hidden inline-flex items-center rounded-md px-3 py-2
                  text-white/90 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/60"
         >
           ☰
         </button>
       </div>
+
+      <!-- Fila 2 (solo mobile): CTA centrado a lo ancho -->
+      <div id="cta-top" class="col-[1_/_span_3] row-[2] md:hidden flex justify-center pb-3">
+        <a
+          href="https://api.leadconnectorhq.com/widget/booking/xRuzUEjIGwYKcgQHehP5"
+          class="inline-flex items-center justify-center rounded-xl px-7 py-[0.9rem] text-[1rem]
+                 bg-[#1F2623] text-white font-semibold ring-1 ring-white/40 hover:bg-black/60 transition
+                 animate-glow"
+        >
+          Reserva una llamada
+        </a>
+      </div>
     </div>
 
-    <!-- Menú mobile -->
+    <!-- Menú mobile desplegable -->
     <nav id="mobile-menu" class="md:hidden hidden pb-4 space-y-2">
-      <a href="/" class="block rounded-lg px-3 py-2 hover:bg-white/10">Inicio</a
-      >
-      <a
-        href="/sobre-nosotros"
-        class="block rounded-lg px-3 py-2 hover:bg-white/10">Sobre Nosotros</a
-      >
-      <a href="/servicios" class="block rounded-lg px-3 py-2 hover:bg-white/10"
-        >Servicios</a
-      >
-      <a href="/contacto" class="block rounded-lg px-3 py-2 hover:bg-white/10"
-        >Contacto</a
-      >
+      <a href="/" class="block rounded-lg px-3 py-2 hover:bg-white/10">Inicio</a>
+      <a href="/sobre-nosotros" class="block rounded-lg px-3 py-2 hover:bg-white/10">Sobre Nosotros</a>
+      <a href="/servicios" class="block rounded-lg px-3 py-2 hover:bg-white/10">Servicios</a>
+      <a href="/contacto" class="block rounded-lg px-3 py-2 hover:bg-white/10">Contacto</a>
       <a
         href="https://api.leadconnectorhq.com/widget/booking/xRuzUEjIGwYKcgQHehP5"
         class="block text-center rounded-2xl px-5 py-2.5
-               bg-[#1F2623] text-white font-semibold
-               ring-1 ring-white/20 shadow-[0_0_0_3px_rgba(255,255,255,0.08)]
-               hover:bg-black/60 transition"
+               bg-[#1F2623] text-white font-semibold ring-1 ring-white/20
+               shadow-[0_0_0_3px_rgba(255,255,255,0.08)] hover:bg-black/60 transition"
       >
         Reserva una llamada
       </a>
@@ -99,19 +81,38 @@
   </div>
 
   <script>
-    const init = () => {
-      const btn = document.getElementById("menu-btn");
-      const menu = document.getElementById("mobile-menu");
-      if (!btn || !menu) return;
+  const init = () => {
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    const ctaTop = document.getElementById("cta-top"); // botón de arriba
 
-      btn.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-        const expanded = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", (!expanded).toString());
-      });
-    };
-    if (document.readyState === "loading")
-      document.addEventListener("DOMContentLoaded", init);
-    else init();
-  </script>
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", () => {
+      const isHidden = menu.classList.toggle("hidden");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", (!expanded).toString());
+
+      // Ocultar o mostrar el botón superior
+      if (!isHidden) {
+        ctaTop?.classList.add("hidden");
+      } else {
+        ctaTop?.classList.remove("hidden");
+      }
+    });
+  };
+
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", init);
+  else init();
+</script>
+
+  <!-- Brillo del borde del botón -->
+  <style>
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,0.10), 0 0 16px rgba(255,255,255,0.08) inset; }
+      50%      { box-shadow: 0 0 0 3px rgba(255,255,255,0.28), 0 0 22px rgba(255,255,255,0.16) inset; }
+    }
+    .animate-glow { animation: glowPulse 2.4s ease-in-out infinite; }
+  </style>
 </header>
